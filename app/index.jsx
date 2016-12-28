@@ -54,7 +54,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     authenticated: state.auth.authenticated
-  }
-}
+  };
+};
 
 module.exports = connect(mapStateToProps)(Layout);

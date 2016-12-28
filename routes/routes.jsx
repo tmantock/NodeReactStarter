@@ -5,12 +5,12 @@ const Route = ReactRouter.Route;
 const IndexRoute = ReactRouter.IndexRoute;
 const browserHistory = ReactRouter.browserHistory;
 //Components
-const Layout = require('../app/index.jsx');
-const Signup = require('../app/components/Auth/Signup.jsx');
-const Signin = require('../app/components/Auth/Signin.jsx');
-const Signout = require('../app/components/Auth/Signout.jsx');
+import Layout from '../app/index.jsx';
+import Signup from '../app/components/Auth/Signup.jsx';
+import Signin from '../app/components/Auth/Signin.jsx';
+import Signout from '../app/components/Auth/Signout.jsx';
 
-module.exports = (
+export default (
     <Router history={browserHistory}>
         <Route path='/' component = {Layout}>
             <Route path='/signup' component = {Signup} />

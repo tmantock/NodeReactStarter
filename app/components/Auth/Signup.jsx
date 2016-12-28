@@ -42,7 +42,7 @@ class SignUp extends Component {
                 {this.renderAlert()}
                 <button className="btn btn-primary" disabled={ pristine || submitting || email.error || password.error || passwordConfirm.error } >Sign Up</button>
             </form>
-        )
+        );
     }
 }
 
@@ -53,7 +53,7 @@ function validate(formProps) {
         email: 'Please enater an email',
         password: 'Please enter a password',
         passwordConfirm: 'Please enter a password confirmation'
-    }
+    };
 
     for(var prop in formProps){
         if(!formProps[prop]){
@@ -72,7 +72,7 @@ function mapStateToProps(state){
     return { errorMessage: state.auth.error };
 }
 
-module.exports = reduxForm({
+export default reduxForm({
     form: 'signup',
     fields: ['email', 'password', 'passwordConfirm'],
     validate

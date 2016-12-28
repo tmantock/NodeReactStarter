@@ -11,7 +11,7 @@ const routes = require('./routes/index.jsx');
 app.use(express.static('public'));
 app.use(routes);
 //declare the port to serve the app
-const PORT = process.env.PORT || 8888;
+const PORT = process.env.PORT || 8080;
 //serve the application over the declared port
 app.listen(PORT, function () {
     console.log('Serving on PORT ', PORT);

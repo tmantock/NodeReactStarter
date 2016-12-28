@@ -41,7 +41,7 @@ function mapStateToProps(state){
     return { errorMessage: state.auth.error };
 }
 
-module.exports = reduxForm({
+export default reduxForm({
     form: 'signin',
     fields: ['email', 'password']
 }, mapStateToProps, actions)(Signin);
