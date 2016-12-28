@@ -75,7 +75,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxThunk2.default)(_redux.createStore);
-	var store = createStoreWithMiddleware(_reducers2.default);
+	var store = createStoreWithMiddleware(_reducers2.default, window.PROPS);
 
 	var token = localStorage.getItem('token');
 
@@ -89,7 +89,7 @@
 	    _reactRedux.Provider,
 	    { store: store },
 	    _routes2.default
-	));
+	), document);
 
 /***/ },
 /* 1 */
@@ -23377,6 +23377,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var custom = this.props.custom;
 	      return _react2.default.createElement(
 	        'html',
 	        null,
@@ -23410,6 +23411,9 @@
 	            )
 	          ),
 	          this.props.children,
+	          _react2.default.createElement('script', { dangerouslySetInnerHTML: {
+	              __html: 'window.PROPS=' + JSON.stringify(custom)
+	            } }),
 	          _react2.default.createElement('script', { src: '/bundle.js' })
 	        )
 	      );

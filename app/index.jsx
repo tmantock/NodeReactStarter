@@ -27,6 +27,7 @@ class Layout extends Component {
   }
 
   render(){
+    const custom = this.props.custom;
     return (
       <html> 
         <head>
@@ -42,7 +43,10 @@ class Layout extends Component {
                     {this.renderLinks()}
                 </ul>
             </nav>
-          {this.props.children} 
+          {this.props.children}
+          <script dangerouslySetInnerHTML={{
+                        __html: 'window.PROPS=' + JSON.stringify(custom)
+                    }} /> 
           <script src = '/bundle.js' /> 
         </body> 
       </html>

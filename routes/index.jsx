@@ -1,7 +1,7 @@
 const router = require('express').Router();
 import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { match, RouterContext} from 'react-router';
+const ReactDOMServer = require('react-dom/server');
+const ReactRouter = require('react-router');
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
@@ -17,14 +17,14 @@ router.get('*', function (request, response) {
     //we need to update the application state
     store.dispatch({ type: UNAUTH_USER });
 
-    match({
+    ReactRouter.match({
         routes: routes,
         location: request.url
     }, function (error, redirectLocation, renderProps) {
         if (renderProps) {
-            const html = renderToString(
+            const html = ReactDOMServer.renderToString(
                 <Provider store={store}>
-                    <RouterContext {...renderProps} />
+                    <ReactRouter.RouterContext {...renderProps} />
                 </Provider>
             );
             response.send(html);

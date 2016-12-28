@@ -7,7 +7,7 @@ import reduxThunk from 'redux-thunk';
 import reducers from './app/reducers';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers);
+const store = createStoreWithMiddleware(reducers, window.PROPS);
 
 import { AUTH_USER } from './app/actions/types';
 
@@ -22,5 +22,5 @@ if(token){
 ReactDOM.render(
     <Provider store={store}>
         {routes}
-    </Provider>
+    </Provider>, document
 );
