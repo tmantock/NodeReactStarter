@@ -10,7 +10,7 @@ import Signup from '../app/components/Auth/Signup.jsx';
 import Signin from '../app/components/Auth/Signin.jsx';
 import Signout from '../app/components/Auth/Signout.jsx';
 
-export default (
+module.exports = (
     <Router history={browserHistory}>
         <Route path='/' component = {Layout}>
             <Route path='/signup' component = {Signup} />

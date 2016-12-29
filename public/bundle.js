@@ -75,7 +75,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxThunk2.default)(_redux.createStore);
-	var store = createStoreWithMiddleware(_reducers2.default, window.PROPS);
+	var custom = window.PROPS;
+	var store = createStoreWithMiddleware(_reducers2.default, custom);
 
 	var token = localStorage.getItem('token');
 
@@ -23257,10 +23258,6 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
 	var _index = __webpack_require__(209);
 
 	var _index2 = _interopRequireDefault(_index);
@@ -23286,7 +23283,9 @@
 	var IndexRoute = ReactRouter.IndexRoute;
 	var browserHistory = ReactRouter.browserHistory;
 	//Components
-	exports.default = React.createElement(
+
+
+	module.exports = React.createElement(
 	    Router,
 	    { history: browserHistory },
 	    React.createElement(
@@ -23378,6 +23377,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var custom = this.props.custom;
+
 	      return _react2.default.createElement(
 	        'html',
 	        null,
@@ -23424,11 +23424,12 @@
 	}(_react.Component);
 
 	var mapStateToProps = function mapStateToProps(state) {
-	  console.log(state);
 	  return {
 	    authenticated: state.auth.authenticated
 	  };
 	};
+
+	//Test Github Desktop
 
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(Layout);
 
@@ -54927,10 +54928,7 @@
 	    return array ? array.length : 0;
 	  },
 	  some: _some3.default,
-	  splice: _splice2.default,
-	  toJS: function toJS(value) {
-	    return value;
-	  }
+	  splice: _splice2.default
 	};
 
 	exports.default = structure;
@@ -55566,14 +55564,12 @@
 	var createField = function createField(_ref) {
 	  var deepEqual = _ref.deepEqual,
 	      getIn = _ref.getIn,
-	      setIn = _ref.setIn,
-	      toJS = _ref.toJS;
+	      setIn = _ref.setIn;
 
 
 	  var ConnectedField = (0, _ConnectedField2.default)({
 	    deepEqual: deepEqual,
-	    getIn: getIn,
-	    toJS: toJS
+	    getIn: getIn
 	  });
 
 	  var Field = function (_Component) {
@@ -55740,8 +55736,7 @@
 
 	var createConnectedField = function createConnectedField(_ref) {
 	  var deepEqual = _ref.deepEqual,
-	      getIn = _ref.getIn,
-	      toJS = _ref.toJS;
+	      getIn = _ref.getIn;
 
 
 	  var getSyncError = function getSyncError(syncErrors, name) {
@@ -55873,7 +55868,7 @@
 	            normalize = _props5.normalize,
 	            rest = _objectWithoutProperties(_props5, ['component', 'withRef', 'name', '_reduxForm', 'normalize']);
 
-	        var _createFieldProps = (0, _createFieldProps3.default)({ getIn: getIn, toJS: toJS }, name, _extends({}, rest, {
+	        var _createFieldProps = (0, _createFieldProps3.default)(getIn, name, _extends({}, rest, {
 	          onBlur: this.handleBlur,
 	          onChange: this.handleChange,
 	          onDrop: this.handleDrop,
@@ -55980,10 +55975,7 @@
 	  return props;
 	};
 
-	var createFieldProps = function createFieldProps(_ref2, name, _ref) {
-	  var getIn = _ref2.getIn,
-	      toJS = _ref2.toJS;
-
+	var createFieldProps = function createFieldProps(getIn, name, _ref) {
 	  var asyncError = _ref.asyncError,
 	      asyncValidating = _ref.asyncValidating,
 	      onBlur = _ref.onBlur,
@@ -56028,7 +56020,7 @@
 	      onFocus: onFocus,
 	      value: formattedFieldValue
 	    }, _value),
-	    meta: _extends({}, toJS(state), {
+	    meta: _extends({}, state, {
 	      active: !!(state && getIn(state, 'active')),
 	      asyncValidating: asyncValidating,
 	      autofilled: !!(state && getIn(state, 'autofilled')),
@@ -57130,14 +57122,12 @@
 
 	var createFields = function createFields(_ref) {
 	  var deepEqual = _ref.deepEqual,
-	      getIn = _ref.getIn,
-	      toJS = _ref.toJS;
+	      getIn = _ref.getIn;
 
 
 	  var ConnectedFields = (0, _ConnectedFields2.default)({
 	    deepEqual: deepEqual,
-	    getIn: getIn,
-	    toJS: toJS
+	    getIn: getIn
 	  });
 
 	  var Fields = function (_Component) {
@@ -57314,8 +57304,7 @@
 
 	var createConnectedFields = function createConnectedFields(_ref) {
 	  var deepEqual = _ref.deepEqual,
-	      getIn = _ref.getIn,
-	      toJS = _ref.toJS;
+	      getIn = _ref.getIn;
 
 
 	  var getSyncError = function getSyncError(syncErrors, name) {
@@ -57456,7 +57445,7 @@
 	        var _Object$keys$reduce = Object.keys(_fields).reduce(function (accumulator, name) {
 	          var connectedProps = _fields[name];
 
-	          var _createFieldProps = (0, _createFieldProps3.default)({ getIn: getIn, toJS: toJS }, name, _extends({}, connectedProps, rest, {
+	          var _createFieldProps = (0, _createFieldProps3.default)(getIn, name, _extends({}, connectedProps, rest, {
 	            onBlur: _this3.onBlurFns[name],
 	            onChange: _this3.onChangeFns[name],
 	            onFocus: _this3.onFocusFns[name]

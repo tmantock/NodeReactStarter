@@ -28,6 +28,7 @@ class Layout extends Component {
 
   render(){
     const custom = this.props.custom;
+
     return (
       <html> 
         <head>

@@ -11,8 +11,10 @@ import { UNAUTH_USER } from '../app/actions/types';
 //function reducers(state) { return state.auth.authenticated.false; }
 
 router.get('*', function (request, response) {
+    const initialState = {};
+    const custom = initialState;
     const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-    const store = createStoreWithMiddleware(reducers);
+    const store = createStoreWithMiddleware(reducers, custom);
     //if we have a token, consider the user to be signed in
     //we need to update the application state
     store.dispatch({ type: UNAUTH_USER });
