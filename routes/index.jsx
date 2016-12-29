@@ -5,6 +5,7 @@ const ReactRouter = require('react-router');
 const Redux = require('redux');
 const applyMiddleware = Redux.applyMiddleware;
 const createStore = Redux.createStore;
+const combineReducers = Redux.combineReducers;
 const Provider = require('react-redux').Provider;
 const reduxThunk = require('redux-thunk');
 const reducers = require('../app/reducers/index.js');
@@ -13,7 +14,9 @@ import { UNAUTH_USER } from '../app/actions/types';
 
 router.get('*', function (request, response) {
     //const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-    const store = createStore(reducers, applyMiddleware(reduxThunk));
+    const initialState = {};
+    const reducer = combineReducers(reducers);
+    const store = createStore(reducer);
     //if we have a token, consider the user to be signed in
     //we need to update the application state
     store.dispatch({ type: UNAUTH_USER });

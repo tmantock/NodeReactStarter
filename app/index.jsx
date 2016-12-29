@@ -4,6 +4,9 @@ import { Link } from 'react-router';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 class Layout extends Component {
+  constructor(props) {
+    super(props);
+  }
   renderLinks(){
      if (this.props.authenticated) {
           return [
@@ -27,6 +30,8 @@ class Layout extends Component {
   }
 
   render(){
+    const customProps = this.props.customProps;
+    const customState = this.getState();
     return (
       <html> 
         <head>
@@ -43,6 +48,10 @@ class Layout extends Component {
                 </ul>
             </nav>
           {this.props.children} 
+          
+          <script dangerouslySetInnerHTML={{
+                        __html: 'window.PROPS=' + JSON.stringify(custom)
+                    }} />
           <script src = '/bundle.js' /> 
         </body> 
       </html>
