@@ -23396,6 +23396,7 @@
 	        _react2.default.createElement(
 	          'body',
 	          null,
+	          _react2.default.createElement(_reactBootstrap.Navbar, null),
 	          _react2.default.createElement(
 	            'nav',
 	            { className: 'navbar navbar-light' },
@@ -23424,11 +23425,12 @@
 	}(_react.Component);
 
 	var mapStateToProps = function mapStateToProps(state) {
-	  console.log(state);
 	  return {
 	    authenticated: state.auth.authenticated
 	  };
 	};
+
+	//Test Github Desktop
 
 	module.exports = (0, _reactRedux.connect)(mapStateToProps)(Layout);
 

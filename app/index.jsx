@@ -36,7 +36,7 @@ class Layout extends Component {
           <script src="https://maps.googleapis.com/maps/api/js" />
           <link rel='stylesheet' href='/style.css'/>
         </head> 
-        <body> 
+        <body>
           <nav className = "navbar navbar-light">
             <Link to="/" className="navbar-brand">Redux Auth</Link>
                 <ul className = "nav navbar-nav">
