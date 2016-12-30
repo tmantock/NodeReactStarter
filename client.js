@@ -6,9 +6,9 @@ import routes from './routes/routes.jsx';
 import reduxThunk from 'redux-thunk';
 import reducers from './app/reducers';
 
+const preloadedState = window.__PRELOADED_STATE__;
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const custom = window.PROPS;
-const store = createStoreWithMiddleware(reducers, custom);
+const store = createStoreWithMiddleware(reducers, preloadedState);
 
 import { AUTH_USER } from './app/actions/types';
 

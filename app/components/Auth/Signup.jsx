@@ -20,6 +20,7 @@ class SignUp extends Component {
     }
 
     render(){
+        console.log(reduxForm);
         const { handleSubmit, pristine, reset, submitting, fields: { email, password, passwordConfirm } } = this.props;
 
         return (
