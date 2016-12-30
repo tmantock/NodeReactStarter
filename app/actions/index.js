@@ -4,7 +4,7 @@ import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
 
 const API_URL = 'http://localhost:3000';
 
-exports.signinUser = ({ email, password}) => {
+export function signinUser ({ email, password}) {
     return function(dispatch) {
         axios.post(`${API_URL}/signin`, { email, password })
             .then(response => {
@@ -18,10 +18,10 @@ exports.signinUser = ({ email, password}) => {
             .catch(() => {
                 dispatch(authError('Bad Login Information'));
             });
-    }
+    };
 }
 
-exports.signUpUser = ({ email, password}) => {
+export function signUpUser ({ email, password}) {
     return function(dispatch){
         axios.post(`${API_URL}/signup`, {email, password})
             .then(response => {
@@ -32,22 +32,22 @@ exports.signUpUser = ({ email, password}) => {
             .catch(err => {
                 dispatch(authError(err.data.error));
             });
-    }
+    };
 }
 
-exports.authError = (error) => {
+export function authError (error) {
     return {
         type: AUTH_ERROR,
         payload: error
-    }
+    };
 }
 
-exports.signOutUser = () => {
+export function signOutUser() {
     localStorage.removeItem('token');
     return { type: UNAUTH_USER };
 }
 
-exports.fetchMessage = () => {
+export function fetchMessage() {
     return function(dispatch){
         axios.get(API_URL, {
             headers: { authorization: localStorage.getItem('token') }
@@ -56,7 +56,16 @@ exports.fetchMessage = () => {
                 dispatch({
                     type: FETCH_MESSAGE,
                     payload: response.data.message
-                })
-            })
-    }
+                });
+            });
+    };
+}
+
+export function testHttp() {
+    return function(dispatch) {
+        axios.get('http://api.openweathermap.org/data/2.5/weather?appid=3ada3a03e32b69ed8439a913afab37e2&id=2172797')
+            .then(response => {
+                console.log(response);
+            });
+    };
 }

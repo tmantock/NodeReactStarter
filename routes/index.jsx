@@ -14,6 +14,7 @@ router.set('view engine', 'ejs');
 router.get('*', function (request, response) {
     const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
     const store = createStoreWithMiddleware(reducers);
+
     //if we have a token, consider the user to be signed in
     //we need to update the application state
     store.dispatch({ type: UNAUTH_USER });
@@ -29,11 +30,29 @@ router.get('*', function (request, response) {
                     <ReactRouter.RouterContext {...renderProps} />
                 </Provider>
             );
-            response.render('index', {html, preloadedState});
+            response.send(renderFullPage(html, preloadedState));
         } else {
             response.status(404).send('Not Found');
         }
     });
 });
+
+function renderFullPage(html, preloadedState) {
+ return `
+    <!DOCTYPE html>
+        <html>
+            <head>
+                <title>Redux real-world example</title>
+                <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" />
+            </head>
+            <body>
+                <div id="root">${html}</div>
+                <script type="text/javascript" charset="utf-8">
+                window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)};
+                </script>
+                <script src="/bundle.js"></script>
+            </body>
+        </html>`;
+}
 
 module.exports = router;

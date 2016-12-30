@@ -62,11 +62,11 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reduxThunk = __webpack_require__(654);
+	var _reduxThunk = __webpack_require__(655);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(655);
+	var _reducers = __webpack_require__(656);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -23274,6 +23274,10 @@
 
 	var _Signout2 = _interopRequireDefault(_Signout);
 
+	var _LoginJumbotron = __webpack_require__(654);
+
+	var _LoginJumbotron2 = _interopRequireDefault(_LoginJumbotron);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var React = __webpack_require__(1);
@@ -23291,6 +23295,7 @@
 	    React.createElement(
 	        Route,
 	        { path: '/', component: _index2.default },
+	        React.createElement(IndexRoute, { component: _LoginJumbotron2.default }),
 	        React.createElement(Route, { path: '/signup', component: _Signup2.default }),
 	        React.createElement(Route, { path: '/signin', component: _Signin2.default }),
 	        React.createElement(Route, { path: '/signout', component: _Signout2.default })
@@ -50963,6 +50968,16 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.signinUser = signinUser;
+	exports.signUpUser = signUpUser;
+	exports.authError = authError;
+	exports.signOutUser = signOutUser;
+	exports.fetchMessage = fetchMessage;
+	exports.testHttp = testHttp;
+
 	var _axios = __webpack_require__(569);
 
 	var _axios2 = _interopRequireDefault(_axios);
@@ -50975,7 +50990,7 @@
 
 	var API_URL = 'http://localhost:3000';
 
-	exports.signinUser = function (_ref) {
+	function signinUser(_ref) {
 	    var email = _ref.email,
 	        password = _ref.password;
 
@@ -50991,9 +51006,9 @@
 	            dispatch(authError('Bad Login Information'));
 	        });
 	    };
-	};
+	}
 
-	exports.signUpUser = function (_ref2) {
+	function signUpUser(_ref2) {
 	    var email = _ref2.email,
 	        password = _ref2.password;
 
@@ -51006,21 +51021,21 @@
 	            dispatch(authError(err.data.error));
 	        });
 	    };
-	};
+	}
 
-	exports.authError = function (error) {
+	function authError(error) {
 	    return {
 	        type: _types.AUTH_ERROR,
 	        payload: error
 	    };
-	};
+	}
 
-	exports.signOutUser = function () {
+	function signOutUser() {
 	    localStorage.removeItem('token');
 	    return { type: _types.UNAUTH_USER };
-	};
+	}
 
-	exports.fetchMessage = function () {
+	function fetchMessage() {
 	    return function (dispatch) {
 	        _axios2.default.get(API_URL, {
 	            headers: { authorization: localStorage.getItem('token') }
@@ -51031,7 +51046,15 @@
 	            });
 	        });
 	    };
-	};
+	}
+
+	function testHttp() {
+	    return function (dispatch) {
+	        _axios2.default.get('http://api.openweathermap.org/data/2.5/weather?appid=3ada3a03e32b69ed8439a913afab37e2&id=2172797').then(function (response) {
+	            console.log(response);
+	        });
+	    };
+	}
 
 /***/ },
 /* 569 */
@@ -57601,6 +57624,89 @@
 
 /***/ },
 /* 654 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(271);
+
+	var _elemental = __webpack_require__(595);
+
+	var _reactRedux = __webpack_require__(199);
+
+	var _actions = __webpack_require__(568);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//require('./LoginJumbotron.scss');
+
+	var LoginJumbotron = function (_Component) {
+	    _inherits(LoginJumbotron, _Component);
+
+	    function LoginJumbotron() {
+	        _classCallCheck(this, LoginJumbotron);
+
+	        return _possibleConstructorReturn(this, (LoginJumbotron.__proto__ || Object.getPrototypeOf(LoginJumbotron)).apply(this, arguments));
+	    }
+
+	    _createClass(LoginJumbotron, [{
+	        key: 'handleClick',
+	        value: function handleClick() {
+	            this.props.testHttp();
+	            console.log('clicked');
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactBootstrap.Jumbotron,
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Welcome!'
+	                ),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Please login to begin'
+	                ),
+	                _react2.default.createElement(
+	                    'button',
+	                    { type: 'hollow-primary', onClick: this.handleClick.bind(this) },
+	                    'Login'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return LoginJumbotron;
+	}(_react.Component);
+
+	exports.default = (0, _reactRedux.connect)(null, actions)(LoginJumbotron);
+
+/***/ },
+/* 655 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57628,7 +57734,7 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 655 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57641,7 +57747,7 @@
 
 	var _reduxForm = __webpack_require__(523);
 
-	var _auth_reducer = __webpack_require__(656);
+	var _auth_reducer = __webpack_require__(657);
 
 	var _auth_reducer2 = _interopRequireDefault(_auth_reducer);
 
@@ -57655,7 +57761,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 656 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
