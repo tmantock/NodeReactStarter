@@ -7,7 +7,8 @@ import reduxThunk from 'redux-thunk';
 import reducers from './app/reducers';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers, window.PROPS);
+const custom = window.PROPS;
+const store = createStoreWithMiddleware(reducers, custom);
 
 import { AUTH_USER } from './app/actions/types';
 
