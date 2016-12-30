@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
     entry: './client.js',
     output: {
@@ -9,7 +11,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
+                loader: ['babel-loader'],
                 query: {
                     presets: ['react', 'es2015', 'stage-1']
                 }
@@ -24,5 +26,8 @@ module.exports = {
     },
     resolve: {
         extensions: ['', '.js', '.jsx', '.scss', '.less']
-    }
+    },
+    // plugins: [
+    //     new webpack.HotModuleReplacementPlugin()
+    // ]
 };

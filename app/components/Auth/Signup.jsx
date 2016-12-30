@@ -5,7 +5,6 @@ import { Form, FormField, FormInput, Button } from 'elemental';
 
 class SignUp extends Component {
     handleFormSubmit(formProps){
-        //Call action creator to sign up the user
         this.props.signUpUser(formProps);
     }
 
@@ -20,8 +19,7 @@ class SignUp extends Component {
     }
 
     render(){
-        const { handleSubmit, pristine, reset, submitting, fields: { email, password, passwordConfirm } } = this.props;
-
+        const { handleSubmit, pristine, submitting, fields: { email, password, passwordConfirm } } = this.props;
         return (
             <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                 <fieldset className = "form-group">
@@ -42,7 +40,7 @@ class SignUp extends Component {
                 {this.renderAlert()}
                 <button className="btn btn-primary" disabled={ pristine || submitting || email.error || password.error || passwordConfirm.error } >Sign Up</button>
             </form>
-        )
+        );
     }
 }
 
@@ -53,7 +51,7 @@ function validate(formProps) {
         email: 'Please enater an email',
         password: 'Please enter a password',
         passwordConfirm: 'Please enter a password confirmation'
-    }
+    };
 
     for(var prop in formProps){
         if(!formProps[prop]){
@@ -72,7 +70,7 @@ function mapStateToProps(state){
     return { errorMessage: state.auth.error };
 }
 
-module.exports = reduxForm({
+export default reduxForm({
     form: 'signup',
     fields: ['email', 'password', 'passwordConfirm'],
     validate

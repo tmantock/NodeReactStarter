@@ -1,17 +1,19 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const Redux = require('redux');
-const Provider = require('react-redux').Provider;
-const routes = require('./routes/routes.jsx');
-const reduxThunk = require('redux-thunk');
-const reducers = require('./app/reducers');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import routes from './routes/routes.jsx';
+import reduxThunk from 'redux-thunk';
+import reducers from './app/reducers';
 
-const createStoreWithMiddleware = Redux.applyMiddleware(reduxThunk)(Redux.createStore);
-const store = createStoreWithMiddleware(reducers);
+const preloadedState = window.__PRELOADED_STATE__;
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const store = createStoreWithMiddleware(reducers, preloadedState);
 
 import { AUTH_USER } from './app/actions/types';
 
 const token = localStorage.getItem('token');
+
 //if we have a token, consider the user to be signed in
 if(token){
   //we need to update teh application state
@@ -21,5 +23,5 @@ if(token){
 ReactDOM.render(
     <Provider store={store}>
         {routes}
-    </Provider>
-)
+    </Provider>, document.getElementById("root")
+);

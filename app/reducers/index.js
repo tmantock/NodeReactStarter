@@ -7,4 +7,4 @@ const rootReducer = combineReducers({
   auth: authReducer
 });
 
-module.exports = rootReducer;
+export default rootReducer;

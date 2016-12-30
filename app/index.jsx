@@ -1,69 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
-class Layout extends Component {
-  constructor(props) {
-    super(props);
-  }
-  renderLinks(){
-     if (this.props.authenticated) {
-          return [
-              <li className="nav-item" key={1}>
-                  <Link className="nav-link" to="/grades">Grades</Link>
-              </li>,
-              <li className="nav-item" key={2}>
-                  <Link className="nav-link" to="/signout">Sign-Out</Link>
-              </li>
-          ];
-      } else {
-          return [
-                  <li className="nav-item" key={1}>
-                    <Link className="nav-link" to="/signin">Sign-In</Link>
-                  </li>,
-                  <li className="nav-item" key={2}>
-                      <Link className="nav-link" to="/signup">Sign-Up</Link>
-                  </li>
-          ];
-      }
-  }
+import Header from './components/Header/Header.jsx';
 
-  render(){
-    const customProps = this.props.customProps;
-    const customState = this.getState();
+class App extends Component {
+  render() {
     return (
-      <html> 
-        <head>
-          <title>React Redux Isomorphic</title>
-          <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" />
-          <script src="https://maps.googleapis.com/maps/api/js" />
-          <link rel='stylesheet' href='/style.css'/>
-        </head> 
-        <body> 
-          <nav className = "navbar navbar-light">
-            <Link to="/" className="navbar-brand">Redux Auth</Link>
-                <ul className = "nav navbar-nav">
-                    {this.renderLinks()}
-                </ul>
-            </nav>
-          {this.props.children} 
-          
-          <script dangerouslySetInnerHTML={{
-                        __html: 'window.PROPS=' + JSON.stringify(custom)
-                    }} />
-          <script src = '/bundle.js' /> 
-        </body> 
-      </html>
+      <div>
+        <Header />
+        {this.props.children}
+      </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    authenticated: state.auth.authenticated
-  }
-}
-
-module.exports = connect(mapStateToProps)(Layout);
+export default App;
