@@ -4,5 +4,5 @@ A simple starter repo for compiling React JSX and SASS files and serving
 them through a Node server.
 
 TODO: 
--Working on SASS
--Working on Sessions
+- Working on SASS
+- Working on Sessions
