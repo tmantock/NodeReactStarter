@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const router = require('express')();
 import React from 'react';
 const ReactDOMServer = require('react-dom/server');
 const ReactRouter = require('react-router');
@@ -9,6 +9,7 @@ import reducers from '../app/reducers/index.js';
 import routes from './routes.jsx';
 import { UNAUTH_USER } from '../app/actions/types';
 //function reducers(state) { return state.auth.authenticated.false; }
+router.set('view engine', 'ejs');
 
 router.get('*', function (request, response) {
     const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -22,12 +23,13 @@ router.get('*', function (request, response) {
         location: request.url
     }, function (error, redirectLocation, renderProps) {
         if (renderProps) {
+            const preloadedState = store.getState();
             const html = ReactDOMServer.renderToString(
                 <Provider store={store}>
                     <ReactRouter.RouterContext {...renderProps} />
                 </Provider>
             );
-            response.send(html);
+            response.render('index', {html, preloadedState});
         } else {
             response.status(404).send('Not Found');
         }

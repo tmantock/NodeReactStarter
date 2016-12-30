@@ -11,9 +11,9 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
+                loader: ['babel-loader'],
                 query: {
-                    presets: ['react-hot-loader', 'babel']
+                    presets: ['react', 'es2015', 'stage-1']
                 }
             }, {
               test: /\.scss$/,
@@ -27,7 +27,7 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.jsx', '.scss', '.less']
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ]
+    // plugins: [
+    //     new webpack.HotModuleReplacementPlugin()
+    // ]
 };

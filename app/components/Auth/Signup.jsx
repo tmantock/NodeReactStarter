@@ -5,7 +5,6 @@ import { Form, FormField, FormInput, Button } from 'elemental';
 
 class SignUp extends Component {
     handleFormSubmit(formProps){
-        //Call action creator to sign up the user
         this.props.signUpUser(formProps);
     }
 
@@ -20,9 +19,7 @@ class SignUp extends Component {
     }
 
     render(){
-        console.log(reduxForm);
-        const { handleSubmit, pristine, reset, submitting, fields: { email, password, passwordConfirm } } = this.props;
-
+        const { handleSubmit, pristine, submitting, fields: { email, password, passwordConfirm } } = this.props;
         return (
             <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                 <fieldset className = "form-group">

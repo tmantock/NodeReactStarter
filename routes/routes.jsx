@@ -5,14 +5,14 @@ const Route = ReactRouter.Route;
 const IndexRoute = ReactRouter.IndexRoute;
 const browserHistory = ReactRouter.browserHistory;
 //Components
-import Layout from '../app/index.jsx';
+import App from '../app/index.jsx';
 import Signup from '../app/components/Auth/Signup.jsx';
 import Signin from '../app/components/Auth/Signin.jsx';
 import Signout from '../app/components/Auth/Signout.jsx';
 
 module.exports = (
     <Router history={browserHistory}>
-        <Route path='/' component = {Layout}>
+        <Route path='/' component = {App}>
             <Route path='/signup' component = {Signup} />
             <Route path='/signin' component = {Signin} />
             <Route path='/signout' component = {Signout} />

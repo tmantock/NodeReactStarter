@@ -23,5 +23,5 @@ if(token){
 ReactDOM.render(
     <Provider store={store}>
         {routes}
-    </Provider>, document
+    </Provider>, document.getElementById("root")
 );
