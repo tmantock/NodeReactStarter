@@ -2,6 +2,7 @@ const router = require('express')();
 import React from 'react';
 const ReactDOMServer = require('react-dom/server');
 const ReactRouter = require('react-router');
+
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
@@ -12,6 +13,7 @@ import { UNAUTH_USER } from '../app/actions/types';
 router.set('view engine', 'ejs');
 
 router.get('*', function (request, response) {
+
     const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
     const store = createStoreWithMiddleware(reducers);
 
