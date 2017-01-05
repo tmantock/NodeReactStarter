@@ -1,49 +1,35 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
+if(typeof window === 'object') {
+    require('./Header.scss');
+}
 
 class Header extends Component {
-  renderLinks(){
-     if (this.props.authenticated) {
-          return [
-              <li className="nav-item" key={1}>
-                  <Link className="nav-link" to="/grades">Grades</Link>
-              </li>,
-              <li className="nav-item" key={2}>
-                  <Link className="nav-link" to="/signout">Sign-Out</Link>
-              </li>
-          ];
-      } else {
-          return [
-                  <li className="nav-item" key={1}>
-                    <Link className="nav-link" to="/signin">Sign-In</Link>
-                  </li>,
-                  <li className="nav-item" key={2}>
-                      <Link className="nav-link" to="/signup">Sign-Up</Link>
-                  </li>
-          ];
-      }
-  }
-
   render(){
-
     return (
-     
-          <nav className = "navbar navbar-light">
-            <Link to="/" className="navbar-brand">Redux Auth</Link>
+        <nav className = "navbar navbar-light" id="navbar">
+            <div className = 'navbar-header'>
+                <button className = "navbar-toggle collapsed mdl-badge mdl-badge--overlap" id="nav-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span className = "icon-bar"></span>
+                    <span className = "icon-bar"></span>
+                    <span className = "icon-bar"></span>
+                </button>
+                <Link to="/" className="navbar-brand">Node React Redux</Link>
+            </div>
+            <div className="navbar-collapse collapse navbar-responsive-collapse" id="navbar-collapse">
                 <ul className = "nav navbar-nav">
-                    {this.renderLinks()}
+                    <li className="nav-item" key={1}>
+                        <Link className="nav-link" to="/about">About</Link>
+                    </li>
+                    <li className="nav-item" key={2}>
+                        <Link className="nav-link" to="/contact">Contact</Link>
+                    </li>
                 </ul>
-            </nav>
+            </div>
+        </nav>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    authenticated: state.auth.authenticated
-  };
-};
-
-export default connect(mapStateToProps)(Header);
+export default Header;

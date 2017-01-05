@@ -6,18 +6,16 @@ const IndexRoute = ReactRouter.IndexRoute;
 const browserHistory = ReactRouter.browserHistory;
 //Components
 import App from '../app/index.jsx';
-import Signup from '../app/components/Auth/Signup.jsx';
-import Signin from '../app/components/Auth/Signin.jsx';
-import Signout from '../app/components/Auth/Signout.jsx';
-import Jumbotron from '../app/components/login-jumbotron/LoginJumbotron';
+import Welcome from '../app/components/Welcome/Welcome.jsx';
+import About from '../app/components/About/About.jsx';
+import Contact from '../app/components/Contact/Contact.jsx';
 
 module.exports = (
     <Router history={browserHistory}>
         <Route path='/' component = {App}>
-            <IndexRoute component={Jumbotron} />
-            <Route path='/signup' component = {Signup} />
-            <Route path='/signin' component = {Signin} />
-            <Route path='/signout' component = {Signout} />
+            <IndexRoute component={Welcome} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
         </Route>
     </Router>
 );

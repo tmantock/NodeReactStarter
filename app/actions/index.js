@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE } from './types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE, INCREASE } from './types';
 
 const API_URL = 'http://localhost:3000';
 
@@ -68,4 +68,10 @@ export function testHttp() {
                 console.log(response);
             });
     };
+}
+
+export function increment() {
+    return function(dispatch) {
+        dispatch({ type: INCREASE });
+    }
 }
