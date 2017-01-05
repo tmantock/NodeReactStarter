@@ -18,7 +18,7 @@ class Contact extends Component {
         const { count } = this.props;
         return (
             <Jumbotron>
-                <h1>About This</h1>
+                <h1>Contact Me</h1>
                 <p>Nothing to See Here.</p>
                 <h4>{count}</h4>
                 <Button type="hollow-primary" onClick={this.handleClick.bind(this)}>Please Click Me Some More</Button>
