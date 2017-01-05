@@ -14,9 +14,9 @@ import { AUTH_USER } from './app/actions/types';
 
 const token = localStorage.getItem('token');
 
-//if we have a token, consider the user to be signed in
+//if there is a token on the client, consider the user to be signed in
 if(token){
-  //we need to update teh application state
+  //update the application state
   store.dispatch({ type: AUTH_USER });
 }
 

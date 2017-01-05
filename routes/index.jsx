@@ -8,18 +8,13 @@ import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import reducers from '../app/reducers/index.js';
 import routes from './routes.jsx';
-import { UNAUTH_USER } from '../app/actions/types';
-//function reducers(state) { return state.auth.authenticated.false; }
-router.set('view engine', 'ejs');
+//No longer using ejs, but may in the future
+//router.set('view engine', 'ejs');
 
 router.get('*', function (request, response) {
 
     const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
     const store = createStoreWithMiddleware(reducers);
-
-    //if we have a token, consider the user to be signed in
-    //we need to update the application state
-    store.dispatch({ type: UNAUTH_USER });
 
     ReactRouter.match({
         routes: routes,
@@ -40,6 +35,7 @@ router.get('*', function (request, response) {
 });
 
 function renderFullPage(html, preloadedState) {
+    //TODO: Use ejs for templating instead of Javascript templating through String Interpolation
  return `
     <!DOCTYPE html>
         <html>
