@@ -49,7 +49,7 @@ function renderFullPage(html, preloadedState) {
                 <script type="text/javascript" charset="utf-8">
                 window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)};
                 </script>
-                <script src="/bundle.js"></script>
+                <script src="bundle.js"></script>
             </body>
         </html>`;
 }
