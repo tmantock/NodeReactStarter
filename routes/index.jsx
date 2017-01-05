@@ -45,7 +45,7 @@ function renderFullPage(html, preloadedState) {
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
             </head>
             <body>
-                <div id="root">${html}</div>
+                <div id="root"><div>${html}</div></div>
                 <script type="text/javascript" charset="utf-8">
                 window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)};
                 </script>
