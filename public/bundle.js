@@ -54717,7 +54717,7 @@
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    'This is server side rendered React + Redux Application'
+	                    'This is a server side rendered React + Redux Application'
 	                ),
 	                _react2.default.createElement(
 	                    'h4',
