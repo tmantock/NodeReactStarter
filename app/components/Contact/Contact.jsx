@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Jumbotron } from 'react-bootstrap';
-import { Button } from 'elemental';
+import Jumbotron from 'react-bootstrap/lib/Jumbotron';
+import  Button from 'elemental/lib/components/Button';
 import { connect } from 'react-redux';
 import  * as actions  from '../../actions';
 
