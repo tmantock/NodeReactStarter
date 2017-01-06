@@ -19,7 +19,7 @@ class Welcome extends Component {
         return (
             <Jumbotron>
                 <h1>Welcome!</h1>
-                <p>Please login to begin</p>
+                <p>This is a Bare Bones React Application</p>
                 <h4>{count}</h4>
                 <Button type="hollow-primary" onClick={this.handleClick.bind(this)}>Click Me</Button>
             </Jumbotron>
