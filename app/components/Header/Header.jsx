@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-if(typeof window === 'object') {
-    require('./Header.scss');
-}
-
 class Header extends Component {
   render(){
     return (
