@@ -29443,7 +29443,7 @@
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    'This is a Bare Bones React Application'
+	                    'This is a Bare Bones React Application that demonstrates Server Side Rendering JSX, SASS, and Less.'
 	                ),
 	                _react2.default.createElement(
 	                    'h4',

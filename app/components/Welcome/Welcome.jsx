@@ -14,7 +14,7 @@ class Welcome extends Component {
         return (
             <Jumbotron>
                 <h1>Welcome!</h1>
-                <p>This is a Bare Bones React Application</p>
+                <p>This is a Bare Bones React Application that demonstrates Server Side Rendering JSX, SASS, and Less.</p>
                 <h4>{count}</h4>
                 <Button type="hollow-primary" onClick={this.handleClick.bind(this)}>Click Me</Button>
             </Jumbotron>
