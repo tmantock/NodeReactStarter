@@ -43,6 +43,7 @@ function renderFullPage(html, preloadedState) {
                 <title>Redux real-world example</title>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+                <link rel="stylesheet" href="style.css">
             </head>
             <body>
                 <div id="root"><div>${html}</div></div>

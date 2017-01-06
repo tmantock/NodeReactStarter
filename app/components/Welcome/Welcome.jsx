@@ -4,11 +4,6 @@ import { Button } from 'elemental';
 import { connect } from 'react-redux';
 import  * as actions  from '../../actions';
 
-if(typeof window === 'object'){
-    require('./Welcome.scss');
-}
-
-
 class Welcome extends Component {
     handleClick(){
         this.props.increment();
