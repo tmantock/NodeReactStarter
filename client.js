@@ -10,16 +10,6 @@ const preloadedState = window.__PRELOADED_STATE__;
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers, preloadedState);
 
-import { AUTH_USER } from './app/actions/types';
-
-const token = localStorage.getItem('token');
-
-//if there is a token on the client, consider the user to be signed in
-if(token){
-  //update the application state
-  store.dispatch({ type: AUTH_USER });
-}
-
 ReactDOM.render(
     <Provider store={store}>
         {routes}
