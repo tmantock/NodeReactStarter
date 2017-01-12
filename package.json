@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple starter for using Node to serve and compile react using webpack as middleware",
   "main": "server.js",
-  "repository": "git@github.com:tmantock/NodeReactStarter.git"
+  "repository": "git@github.com:tmantock/NodeReactStarter.git",
   "scripts": {
     "start": "webpack && node server.js",
     "dev": "npm-run-all --parallel watch:*",

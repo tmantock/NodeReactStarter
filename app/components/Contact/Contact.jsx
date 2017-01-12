@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import  Button from 'elemental/lib/components/Button';
 import { connect } from 'react-redux';
