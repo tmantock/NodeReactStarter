@@ -29462,6 +29462,10 @@
 	    return Welcome;
 	}(_react.Component);
 
+	Welcome.propTypes = {
+	    count: _react.PropTypes.number.isRequired
+	};
+
 	function mapStateToProps(state) {
 	    return { count: state.counter };
 	}
@@ -54736,6 +54740,10 @@
 	    return About;
 	}(_react.Component);
 
+	About.propTypes = {
+	    count: _react.PropTypes.number.isRequired
+	};
+
 	function mapStateToProps(state) {
 	    return { count: state.counter };
 	}
@@ -54826,6 +54834,10 @@
 
 	    return Contact;
 	}(_react.Component);
+
+	Contact.propTypes = {
+	    count: _react.PropTypes.number.isRequired
+	};
 
 	function mapStateToProps(state) {
 	    return { count: state.counter };
