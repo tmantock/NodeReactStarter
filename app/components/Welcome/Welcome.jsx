@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import { Button } from 'elemental';
 import { connect } from 'react-redux';
@@ -22,6 +22,10 @@ class Welcome extends Component {
     }
     
 }
+
+Welcome.propTypes = {
+    count: PropTypes.number.isRequired
+};
 
 function mapStateToProps(state) {
     return { count: state.counter };
