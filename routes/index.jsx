@@ -40,7 +40,7 @@ function renderFullPage(html, preloadedState) {
     <!DOCTYPE html>
         <html>
             <head>
-                <title>Redux real-world example</title>
+                <title>React Redux Router Starter</title>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
                 <link rel="stylesheet" href="style.css">
