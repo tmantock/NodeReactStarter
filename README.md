@@ -1,4 +1,4 @@
-#Node+React+Redux+React-Router Starter
+# Node+React+Redux+React-Router Starter
 
 A simple starter repo for compiling React JSX, Less, and SASS files and serving them through a Node Express server.
 
