@@ -30,5 +30,3 @@ Advantages of Server Side Rendered JavaScript applications:
 - Faster Load Times
 - SEO
 - Reach users who disable JavaScript on the browser
-
-See it live [here](http://node.tevinmantock.com).
